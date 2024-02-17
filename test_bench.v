@@ -1,5 +1,6 @@
 // 5.5
 // 9.2
+`timescale 1ns/1ns
 module testbench();
 
     reg clock, reset;
@@ -37,5 +38,6 @@ module testbench();
         #(full_clk_period)
         reset = 0;
         #(full_clk_period)
+        iv = 1;
     end
 endmodule
