@@ -804,6 +804,73 @@ module PC2(input [55:0] in, output [47:0] out);
 	assign out[47] = in[31];
 endmodule
 
+module InverseP(input [63:0] in, output [55:0] out);
+	assign out[0] = in[39];
+	assign out[1] = in[7];
+	assign out[2] = in[47];
+	assign out[3] = in[15];
+	assign out[4] = in[55];
+	assign out[5] = in[23];
+	assign out[6] = in[63];
+	assign out[7] = in[31];
+	assign out[8] = in[38];
+	assign out[9] = in[6];
+	assign out[10] = in[46];
+	assign out[11] = in[14];
+	assign out[12] = in[54];
+	assign out[13] = in[22];
+	assign out[14] = in[62];
+	assign out[15] = in[30];
+	assign out[16] = in[37];
+	assign out[17] = in[5];
+	assign out[18] = in[45];
+	assign out[19] = in[13];
+	assign out[20] = in[53];
+	assign out[21] = in[21];
+	assign out[22] = in[61];
+	assign out[23] = in[29];
+	assign out[24] = in[36];
+	assign out[25] = in[4];
+	assign out[26] = in[44];
+	assign out[27] = in[12];
+	assign out[28] = in[52];
+	assign out[29] = in[20];
+	assign out[30] = in[60];
+	assign out[31] = in[28];
+	assign out[32] = in[35];
+	assign out[33] = in[3];
+	assign out[34] = in[43];
+	assign out[35] = in[11];
+	assign out[36] = in[51];
+	assign out[37] = in[19];
+	assign out[38] = in[59];
+	assign out[39] = in[27];
+	assign out[40] = in[34];
+	assign out[41] = in[2];
+	assign out[42] = in[42];
+	assign out[43] = in[10];
+	assign out[44] = in[50];
+	assign out[45] = in[18];
+	assign out[46] = in[58];
+	assign out[47] = in[26];
+	assign out[48] = in[33];
+	assign out[49] = in[1];
+	assign out[50] = in[41];
+	assign out[51] = in[9];
+	assign out[52] = in[49];
+	assign out[53] = in[17];
+	assign out[54] = in[57];
+	assign out[55] = in[25];
+	assign out[56] = in[32];
+	assign out[57] = in[0];
+	assign out[58] = in[40];
+	assign out[59] = in[8];
+	assign out[60] = in[48];
+	assign out[61] = in[16];
+	assign out[62] = in[56];
+	assign out[63] = in[24];
+endmodule
+
 module Key_Shift1(input [27:0] in, output [27:0] shifted);
     assign shifted = {in[26:0], shifted[27]};
 endmodule
@@ -823,64 +890,64 @@ module Key_Generator(input [63:0] keyin, output [47:0] keys [16:1]);
     Key_Shift1 ks00d(D[0], D[1]);
     PC({C[1], D[1]}, keys[1]);
     //2-left shift 1 time
-    Key_Shift1 ks00c(C[1], C[2]);
-    Key_Shift1 ks00d(D[1], D[2]);
+    Key_Shift1 ks01c(C[1], C[2]);
+    Key_Shift1 ks01d(D[1], D[2]);
     PC({C[2], D[2]}, keys[2]);
     //3- left shift 2 times.
-    Key_Shift2 ks00c(C[2], C[3]);
-    Key_Shift2 ks00d(D[2], D[3]);
+    Key_Shift2 ks02c(C[2], C[3]);
+    Key_Shift2 ks02d(D[2], D[3]);
     PC({C[3], D[3]}, keys[1]);
     //4- left shift 2 times
-    Key_Shift2 ks00c(C[3], C[4]);
-    Key_Shift2 ks00d(D[3], D[4]);
+    Key_Shift2 ks03c(C[3], C[4]);
+    Key_Shift2 ks03d(D[3], D[4]);
     PC({C[4], D[4]}, keys[4]);
     //5- left shift 2 times
-    Key_Shift2 ks00c(C[4], C[5]);
-    Key_Shift2 ks00d(D[4], D[5]);
+    Key_Shift2 ks04c(C[4], C[5]);
+    Key_Shift2 ks04d(D[4], D[5]);
     PC({C[5], D[5]}, keys[5]);
     //6- left shift 2 times
-    Key_Shift2 ks00c(C[5], C[6]);
-    Key_Shift2 ks00d(D[5], D[6]);
+    Key_Shift2 ks05c(C[5], C[6]);
+    Key_Shift2 ks05d(D[5], D[6]);
     PC({C[6], D[6]}, keys[6]);
     //7- left shift 2 times
-    Key_Shift2 ks00c(C[6], C[7]);
-    Key_Shift2 ks00d(D[6], D[7]);
+    Key_Shift2 ks06c(C[6], C[7]);
+    Key_Shift2 ks06d(D[6], D[7]);
     PC({C[7], D[7]}, keys[7]);
     //8- left shift 2 times
-    Key_Shift2 ks00c(C[7], C[8]);
-    Key_Shift2 ks00d(D[7], D[8]);
+    Key_Shift2 ks07c(C[7], C[8]);
+    Key_Shift2 ks07d(D[7], D[8]);
     PC({C[8], D[8]}, keys[8]);
     //9- left shift 1 time
-    Key_Shift1 ks00c(C[8], C[9]);
-    Key_Shift1 ks00d(D[8], D[9]);
+    Key_Shift1 ks08c(C[8], C[9]);
+    Key_Shift1 ks08d(D[8], D[9]);
     PC({C[9], D[9]}, keys[9]);
     //10 left shift 2 times
-    Key_Shift2 ks00c(C[9], C[10]);
-    Key_Shift2 ks00d(D[9], D[10]);
+    Key_Shift2 ks09c(C[9], C[10]);
+    Key_Shift2 ks09d(D[9], D[10]);
     PC({C[10], D[10]}, keys[10]);
     //11 left shift 2 times
-    Key_Shift2 ks00c(C[10], C[11]);
-    Key_Shift2 ks00d(D[10], D[11]);
+    Key_Shift2 ks10c(C[10], C[11]);
+    Key_Shift2 ks10d(D[10], D[11]);
     PC({C[11], D[11]}, keys[11]);
     //12 left shift 2 times
-    Key_Shift2 ks00c(C[11], C[12]);
-    Key_Shift2 ks00d(D[11], D[12]);
+    Key_Shift2 ks11c(C[11], C[12]);
+    Key_Shift2 ks11d(D[11], D[12]);
     PC({C[12], D[12]}, keys[12]);
     //13 left shift 2 times
-    Key_Shift2 ks00c(C[12], C[13]);
-    Key_Shift2 ks00d(D[12], D[13]);
+    Key_Shift2 ks12c(C[12], C[13]);
+    Key_Shift2 ks12d(D[12], D[13]);
     PC({C[13], D[13]}, keys[13]);
     //14 left shift 2 times
-    Key_Shift2 ks00c(C[13], C[14]);
-    Key_Shift2 ks00d(D[13], D[14]);
+    Key_Shift2 ks13c(C[13], C[14]);
+    Key_Shift2 ks13d(D[13], D[14]);
     PC({C[14], D[14]}, keys[14]);
     //15 left shift 2 times
-    Key_Shift2 ks00c(C[14], C[15]);
-    Key_Shift2 ks00d(D[14], D[15]);
+    Key_Shift2 ks14c(C[14], C[15]);
+    Key_Shift2 ks14d(D[14], D[15]);
     PC({C[15], D[15]}, keys[15]);
     //16 left shift 1 time
-    Key_Shift1 ks00c(C[15], C[16]);
-    Key_Shift1 ks00d(D[15], D[16]);
+    Key_Shift1 ks15c(C[15], C[16]);
+    Key_Shift1 ks15d(D[15], D[16]);
     PC({C[16], D[16]}, keys[16]);
 endmodule
 
@@ -923,7 +990,7 @@ module des (
     input [63:0] key, //this key will be fixed in this design, so you won't need to necessarily pipeline the keys
     input [63:0] plaintext,
     input iv, //says that there is a valid input
-    output reg [63:0] ciphertext,
+    output [63:0] ciphertext,
     output reg ov
 );
     //beginning
@@ -935,7 +1002,10 @@ module des (
         .out(input_reg_out)
     );
 
-    reg [47:0] keys[15:0]; //keys that will be generated later. keys[layer#][key#]
+    wire [47:0] keys[16:1]; //keys that will be generated later. keys[layer#][key#] //don't need 0
+
+    // Key_Generator(input [63:0] keyin, output [47:0] keys [16:1]);
+    Key_Generator key_gen(key, keys);
 
     //Perform initial permute and split it into left and right
     //Initial_Permute(input [63:0] plaintext, output [63:0] ip);
@@ -952,8 +1022,120 @@ module des (
 
     //calculate l1 and r1
     //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
-    wire[31:0] l1, r1;
-    Func_right layer1(l0_reg_out, r0_reg_out,)
-
-
+    wire[31:0] l1, r1, l1_reg_out, r1_reg_out;
+    Func_right layer1(l0_reg_out, r0_reg_out, key[1], r1);
+    assign l1 = r0_reg_out;
+    Flipflop_32 l0_reg (clock, reset, l1, l1_reg_out);
+    Flipflop_32 r0_reg (clock, reset, r1, r1_reg_out);
+    //calculate l2 and r2
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l2, r2, l2_reg_out, r2_reg_out;
+    Func_right layer2(l1_reg_out, r1_reg_out, key[2], r2);
+    assign l2 = r1_reg_out;
+    Flipflop_32 l2_reg (clock, reset, l2, l2_reg_out);
+    Flipflop_32 r2_reg (clock, reset, r2, r2_reg_out);
+    //calculate l3 and r3
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l3, r3, l3_reg_out, r3_reg_out;
+    Func_right layer3(l2_reg_out, r2_reg_out, key[3], r3);
+    assign l3 = r2_reg_out;
+    Flipflop_32 l3_reg (clock, reset, l3, l3_reg_out);
+    Flipflop_32 r3_reg (clock, reset, r3, r3_reg_out);
+    //calculate l4 and r4
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l4, r4, l4_reg_out, r4_reg_out;
+    Func_right layer4(l3_reg_out, r3_reg_out, key[4], r4);
+    assign l4 = r3_reg_out;
+    Flipflop_32 l4_reg (clock, reset, l4, l4_reg_out);
+    Flipflop_32 r4_reg (clock, reset, r4, r4_reg_out);
+    //calculate l5 and r5
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l5, r5, l5_reg_out, r5_reg_out;
+    Func_right layer5(l4_reg_out, r4_reg_out, key[5], r5);
+    assign l5 = r4_reg_out;
+    Flipflop_32 l5_reg (clock, reset, l5, l5_reg_out);
+    Flipflop_32 r5_reg (clock, reset, r5, r5_reg_out);
+    //calculate l6 and r6
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l6, r6, l6_reg_out, r6_reg_out;
+    Func_right layer6(l5_reg_out, r5_reg_out, key[6], r6);
+    assign l6 = r5_reg_out;
+    Flipflop_32 l6_reg (clock, reset, l6, l6_reg_out);
+    Flipflop_32 r6_reg (clock, reset, r6, r6_reg_out);
+    //calculate l7 and r7
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l7, r7, l7_reg_out, r7_reg_out;
+    Func_right layer7(l6_reg_out, r6_reg_out, key[7], r7);
+    assign l7 = r6_reg_out;
+    Flipflop_32 l7_reg (clock, reset, l7, l7_reg_out);
+    Flipflop_32 r7_reg (clock, reset, r7, r7_reg_out);
+    //calculate l8 and r8
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l8, r8, l8_reg_out, r8_reg_out;
+    Func_right layer8(l7_reg_out, r7_reg_out, key[8], r8);
+    assign l8 = r7_reg_out;
+    Flipflop_32 l8_reg (clock, reset, l8, l8_reg_out);
+    Flipflop_32 r8_reg (clock, reset, r8, r8_reg_out);
+    //calculate l9 and r9
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l9, r9, l9_reg_out, r9_reg_out;
+    Func_right layer9(l8_reg_out, r8_reg_out, key[9], r9);
+    assign l9 = r8_reg_out;
+    Flipflop_32 l9_reg (clock, reset, l9, l9_reg_out);
+    Flipflop_32 r9_reg (clock, reset, r9, r9_reg_out);
+    //calculate l10 and r10
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l10, r10, l10_reg_out, r10_reg_out;
+    Func_right layer10(l9_reg_out, r9_reg_out, key[10], r10);
+    assign l10 = r9_reg_out;
+    Flipflop_32 l10_reg (clock, reset, l10, l10_reg_out);
+    Flipflop_32 r10_reg (clock, reset, r10, r10_reg_out);
+    //calculate l11 and r11
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l11, r11, l11_reg_out, r11_reg_out;
+    Func_right layer11(l10_reg_out, r10_reg_out, key[11], r11);
+    assign l11 = r10_reg_out;
+    Flipflop_32 l11_reg (clock, reset, l11, l11_reg_out);
+    Flipflop_32 r11_reg (clock, reset, r11, r11_reg_out);
+    //calculate l12 and r12
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l12, r12, l12_reg_out, r12_reg_out;
+    Func_right layer12(l11_reg_out, r11_reg_out, key[12], r12);
+    assign l12 = r11_reg_out;
+    Flipflop_32 l12_reg (clock, reset, l12, l12_reg_out);
+    Flipflop_32 r12_reg (clock, reset, r12, r12_reg_out);
+    //calculate l13 and r13
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l13, r13, l13_reg_out, r13_reg_out;
+    Func_right layer13(l12_reg_out, r12_reg_out, key[13], r13);
+    assign l13 = r12_reg_out;
+    Flipflop_32 l13_reg (clock, reset, l13, l13_reg_out);
+    Flipflop_32 r13_reg (clock, reset, r13, r13_reg_out);
+    //calculate l14 and r14
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l14, r14, l14_reg_out, r14_reg_out;
+    Func_right layer14(l13_reg_out, r13_reg_out, key[14], r14);
+    assign l14 = r13_reg_out;
+    Flipflop_32 l14_reg (clock, reset, l14, l14_reg_out);
+    Flipflop_32 r14_reg (clock, reset, r14, r14_reg_out);
+    //calculate l15 and r15
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l15, r15, l15_reg_out, r15_reg_out;
+    Func_right layer15(l14_reg_out, r14_reg_out, key[15], r15);
+    assign l15 = r14_reg_out;
+    Flipflop_32 l15_reg (clock, reset, l15, l15_reg_out);
+    Flipflop_32 r15_reg (clock, reset, r15, r15_reg_out);
+    //calculate l16 and r16
+    //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
+    wire[31:0] l16, r16, l16_reg_out, r16_reg_out;
+    Func_right layer16(l15_reg_out, r15_reg_out, key[16], r16);
+    assign l16 = r15_reg_out;
+    Flipflop_32 l16_reg (clock, reset, l16, l16_reg_out);
+    Flipflop_32 r16_reg (clock, reset, r16, r16_reg_out);
+    
+    //final permutation before output
+    //InverseP(input [63:0] in, output [55:0] out);
+    wire [63:0] final_text;
+    InverseP final_perm({r6_reg_out, l16_reg_out}, final_text);
+    Flipflop_64 output_reg(final_text, ciphertext);
 endmodule
