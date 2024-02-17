@@ -1,4 +1,4 @@
-module s1(input [5:0] x, output [3:0] y);
+module S1(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=15;
@@ -68,7 +68,7 @@ module s1(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module s2(input [5:0] x, output [3:0] y);
+module S2(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=15;
@@ -138,7 +138,7 @@ module s2(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module s3(input [5:0] x, output [3:0] y);
+module S3(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=10;
@@ -208,7 +208,7 @@ module s3(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module s4(input [5:0] x, output [3:0] y);
+module S4(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=7;
@@ -278,7 +278,7 @@ module s4(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module s5(input [5:0] x, output [3:0] y);
+module S5(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=2;
@@ -348,7 +348,7 @@ module s5(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module s6(input [5:0] x, output [3:0] y);
+module S6(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=12;
@@ -418,7 +418,7 @@ module s6(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module s7(input [5:0] x, output [3:0] y);
+module S7(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=4;
@@ -488,7 +488,7 @@ module s7(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module s8(input [5:0] x, output [3:0] y);
+module S8(input [5:0] x, output [3:0] y);
 	always @(*) begin
 		case (s)
 			0: y=13;

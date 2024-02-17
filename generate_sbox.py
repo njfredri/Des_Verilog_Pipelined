@@ -1,6 +1,6 @@
 
 
-def gen_case_string(array, file, name):
+def gen_sbox_module(array, file, name):
     beginningstr = "module " + name + "(input [5:0] x, output [3:0] y);\n"
     
     i = 0
@@ -79,13 +79,13 @@ S8=[
 
 
 
-gen_case_string(S2, fout, 's1')
-gen_case_string(S2, fout, 's2')
-gen_case_string(S3, fout, 's3')
-gen_case_string(S4, fout, 's4')
-gen_case_string(S5, fout, 's5')
-gen_case_string(S6, fout, 's6')
-gen_case_string(S7, fout, 's7')
-gen_case_string(S8, fout, 's8')
+gen_sbox_module(S2, fout, 'S1')
+gen_sbox_module(S2, fout, 'S2')
+gen_sbox_module(S3, fout, 'S3')
+gen_sbox_module(S4, fout, 'S4')
+gen_sbox_module(S5, fout, 'S5')
+gen_sbox_module(S6, fout, 'S6')
+gen_sbox_module(S7, fout, 'S7')
+gen_sbox_module(S8, fout, 'S8')
 
 fout.close()
