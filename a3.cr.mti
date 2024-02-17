@@ -1,0 +1,6 @@
+D:/Spring2024/Reconfigurable/Assignment3/test_bench.v {0 {vlog -work work -vopt -stats=none D:/Spring2024/Reconfigurable/Assignment3/test_bench.v
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module testbench
+** Error: (vlog-13069) D:/Spring2024/Reconfigurable/Assignment3/test_bench.v(40): near "end": syntax error, unexpected end.
+
+} {4.0 5.0} {}}

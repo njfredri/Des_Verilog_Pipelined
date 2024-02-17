@@ -1,4 +1,4 @@
-module Expand_r (input [31:0] r, output [47:0] exp);
+module Expand_r (input [32:1] r, output [47:0] exp); //changed r bits to start from 1
     // int E[] = //remember 32 is the first bit. Type it in reverse
     // {
     //     32,  1,  2,  3,  4,  5,
@@ -11,18 +11,18 @@ module Expand_r (input [31:0] r, output [47:0] exp);
     //     28, 29, 30, 31, 32,  1
     // 
     //doing concatination instead of a bunch of lines
-    assign exp[5:0] = {input[5], input[4], input[3], input[2], input[1], input[32]};
-    assign exp[11:6] = {input[9], input[8], input[7], input[6], input[5], input[4]};
-    assign exp[17:12] = {input[13], input[12], input[11], input[10], input[9], input[8]};
-    assign exp[23:18] = {input[17], input[16], input[15], input[14], input[13], input[12]};
-    assign exp[29:24] = {input[21], input[20], input[19], input[18], input[17], input[16]};
-    assign exp[35:30] = {input[25], input[24], input[23], input[22], input[21], input[20]};
-    assign exp[41:36] = {input[29], input[28], input[27], input[26], input[25], input[24]};
-    assign exp[47:42] = {input[1], input[32], input[31], input[30], input[29], input[28]};
+    assign exp[5:0] = {r[5], r[4], r[3], r[2], r[1], r[32]};
+    assign exp[11:6] = {r[9], r[8], r[7], r[6], r[5], r[4]};
+    assign exp[17:12] = {r[13], r[12], r[11], r[10], r[9], r[8]};
+    assign exp[23:18] = {r[17], r[16], r[15], r[14], r[13], r[12]};
+    assign exp[29:24] = {r[21], r[20], r[19], r[18], r[17], r[16]};
+    assign exp[35:30] = {r[25], r[24], r[23], r[22], r[21], r[20]};
+    assign exp[41:36] = {r[29], r[28], r[27], r[26], r[25], r[24]};
+    assign exp[47:42] = {r[1], r[32], r[31], r[30], r[29], r[28]};
 endmodule
 
 module Xor_with_key(input[47:0] exp, input[47:0] key, output[47:0] out);
-    assign output = exp^key;
+    assign out = exp^key;
 endmodule
 
 //primitive functions
@@ -32,6 +32,8 @@ endmodule
 //created a python script to generate the 8 models using the arrays
 //each s will convert 6 bit value to 4 bit. There are 8 sboxs, so there should be a 32 bit result
 module S1(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=15;
@@ -102,6 +104,8 @@ module S1(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 module S2(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=15;
@@ -172,6 +176,8 @@ module S2(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 module S3(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=10;
@@ -242,6 +248,8 @@ module S3(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 module S4(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=7;
@@ -312,6 +320,8 @@ module S4(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 module S5(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=2;
@@ -382,6 +392,8 @@ module S5(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 module S6(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=12;
@@ -452,6 +464,8 @@ module S6(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 module S7(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=4;
@@ -522,6 +536,8 @@ module S7(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 module S8(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=13;
@@ -592,7 +608,9 @@ module S8(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 
-module Pbox(input [31:0] x, output [31:0] out);
+
+
+module Pbox(input [32:1] x, output [31:0] out);
     //     int P[] =
     // {
     //     16,  7, 20, 21,
@@ -631,20 +649,20 @@ module Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[
         .exp(expandedr),
         .key(key),
         .out(xorkey_out)
-    )
+    );
     //connect to the S1-S8
     wire[5:0] S1_in, S2_in, S3_in, S4_in, S5_in, S6_in, S7_in, S8_in;
     assign {S1_in, S2_in, S3_in, S4_in, S5_in, S6_in, S7_in, S8_in} = xorkey_out;
     wire[5:0] S1_out, S2_out, S3_out, S4_out, S5_out, S6_out, S7_out, S8_out;
     // S1(input [5:0] x, output [3:0] y);
     S1 s1box(S1_in, S1_out);
-    S2 s1box(S2_in, S2_out);
-    S3 s1box(S3_in, S3_out);
-    S4 s1box(S4_in, S4_out);
-    S5 s1box(S5_in, S5_out);
-    S6 s1box(S6_in, S6_out);
-    S7 s1box(S7_in, S7_out);
-    S8 s1box(S8_in, S8_out);
+    S2 s2box(S2_in, S2_out);
+    S3 s3box(S3_in, S3_out);
+    S4 s4box(S4_in, S4_out);
+    S5 s5box(S5_in, S5_out);
+    S6 s6box(S6_in, S6_out);
+    S7 s7box(S7_in, S7_out);
+    S8 s8box(S8_in, S8_out);
     wire [31:0] S_out;
     assign S_out = {S1_out, S2_out, S3_out, S4_out, S5_out, S6_out, S7_out, S8_out};
     //connect to Pbox
@@ -804,7 +822,7 @@ module PC2(input [55:0] in, output [47:0] out);
 	assign out[47] = in[31];
 endmodule
 
-module InverseP(input [63:0] in, output [55:0] out);
+module InverseP(input [63:0] in, output [63:0] out);
 	assign out[0] = in[39];
 	assign out[1] = in[7];
 	assign out[2] = in[47];
@@ -879,77 +897,86 @@ module Key_Shift2(input [27:0] in, output [27:0] shifted);
     assign shifted = {in[25:0], in[27:26]};
 endmodule
 
-module Key_Generator(input [63:0] keyin, output [47:0] keys [16:1]);
+module Key_Generator 
+    #(parameter key_out_width=48,
+    parameter num_keys=16)
+    ( input [63:0] keyin, 
+        output [(num_keys*key_out_width -1): 0] keys_out
+    );
     wire[55:0] pc1_out;
     wire[27:0] C [16:0];
     wire[27:0] D [16:0];
+    wire [47:0] keys [16:1];
     PC1 pc1(keyin, pc1_out);
     Split_C_D splitcd(pc1_out, C[0], D[0]);
-    //1-left shift then PC2 to key1
-    Key_Shift1 ks00c(C[0], C[1]);
-    Key_Shift1 ks00d(D[0], D[1]);
-    PC({C[1], D[1]}, keys[1]);
-    //2-left shift 1 time
-    Key_Shift1 ks01c(C[1], C[2]);
-    Key_Shift1 ks01d(D[1], D[2]);
-    PC({C[2], D[2]}, keys[2]);
-    //3- left shift 2 times.
-    Key_Shift2 ks02c(C[2], C[3]);
-    Key_Shift2 ks02d(D[2], D[3]);
-    PC({C[3], D[3]}, keys[1]);
-    //4- left shift 2 times
-    Key_Shift2 ks03c(C[3], C[4]);
-    Key_Shift2 ks03d(D[3], D[4]);
-    PC({C[4], D[4]}, keys[4]);
-    //5- left shift 2 times
-    Key_Shift2 ks04c(C[4], C[5]);
-    Key_Shift2 ks04d(D[4], D[5]);
-    PC({C[5], D[5]}, keys[5]);
-    //6- left shift 2 times
-    Key_Shift2 ks05c(C[5], C[6]);
-    Key_Shift2 ks05d(D[5], D[6]);
-    PC({C[6], D[6]}, keys[6]);
-    //7- left shift 2 times
-    Key_Shift2 ks06c(C[6], C[7]);
-    Key_Shift2 ks06d(D[6], D[7]);
-    PC({C[7], D[7]}, keys[7]);
-    //8- left shift 2 times
-    Key_Shift2 ks07c(C[7], C[8]);
-    Key_Shift2 ks07d(D[7], D[8]);
-    PC({C[8], D[8]}, keys[8]);
-    //9- left shift 1 time
-    Key_Shift1 ks08c(C[8], C[9]);
-    Key_Shift1 ks08d(D[8], D[9]);
-    PC({C[9], D[9]}, keys[9]);
-    //10 left shift 2 times
-    Key_Shift2 ks09c(C[9], C[10]);
-    Key_Shift2 ks09d(D[9], D[10]);
-    PC({C[10], D[10]}, keys[10]);
-    //11 left shift 2 times
-    Key_Shift2 ks10c(C[10], C[11]);
-    Key_Shift2 ks10d(D[10], D[11]);
-    PC({C[11], D[11]}, keys[11]);
-    //12 left shift 2 times
-    Key_Shift2 ks11c(C[11], C[12]);
-    Key_Shift2 ks11d(D[11], D[12]);
-    PC({C[12], D[12]}, keys[12]);
-    //13 left shift 2 times
-    Key_Shift2 ks12c(C[12], C[13]);
-    Key_Shift2 ks12d(D[12], D[13]);
-    PC({C[13], D[13]}, keys[13]);
-    //14 left shift 2 times
-    Key_Shift2 ks13c(C[13], C[14]);
-    Key_Shift2 ks13d(D[13], D[14]);
-    PC({C[14], D[14]}, keys[14]);
-    //15 left shift 2 times
-    Key_Shift2 ks14c(C[14], C[15]);
-    Key_Shift2 ks14d(D[14], D[15]);
-    PC({C[15], D[15]}, keys[15]);
-    //16 left shift 1 time
-    Key_Shift1 ks15c(C[15], C[16]);
-    Key_Shift1 ks15d(D[15], D[16]);
-    PC({C[16], D[16]}, keys[16]);
+    	//layer 1 - left shift by 1 then PC2 to key1
+	Key_Shift1 ks1c(C[0], C[1]);
+	Key_Shift1 ks1d(D[0], D[1]);
+	PC2 pc2_1 ({C[1], D[1]}, keys[1]);
+	//layer 2 - left shift by 1 then PC2 to key1
+	Key_Shift1 ks2c(C[1], C[2]);
+	Key_Shift1 ks2d(D[1], D[2]);
+	PC2 pc2_2 ({C[2], D[2]}, keys[2]);
+	//layer 3 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks3c(C[2], C[3]);
+	Key_Shift2 ks3d(D[2], D[3]);
+	PC2 pc2_3 ({C[3], D[3]}, keys[3]);
+	//layer 4 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks4c(C[3], C[4]);
+	Key_Shift2 ks4d(D[3], D[4]);
+	PC2 pc2_4 ({C[4], D[4]}, keys[4]);
+	//layer 5 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks5c(C[4], C[5]);
+	Key_Shift2 ks5d(D[4], D[5]);
+	PC2 pc2_5 ({C[5], D[5]}, keys[5]);
+	//layer 6 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks6c(C[5], C[6]);
+	Key_Shift2 ks6d(D[5], D[6]);
+	PC2 pc2_6 ({C[6], D[6]}, keys[6]);
+	//layer 7 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks7c(C[6], C[7]);
+	Key_Shift2 ks7d(D[6], D[7]);
+	PC2 pc2_7 ({C[7], D[7]}, keys[7]);
+	//layer 8 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks8c(C[7], C[8]);
+	Key_Shift2 ks8d(D[7], D[8]);
+	PC2 pc2_8 ({C[8], D[8]}, keys[8]);
+	//layer 9 - left shift by 1 then PC2 to key1
+	Key_Shift1 ks9c(C[8], C[9]);
+	Key_Shift1 ks9d(D[8], D[9]);
+	PC2 pc2_9 ({C[9], D[9]}, keys[9]);
+	//layer 10 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks10c(C[9], C[10]);
+	Key_Shift2 ks10d(D[9], D[10]);
+	PC2 pc2_10 ({C[10], D[10]}, keys[10]);
+	//layer 11 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks11c(C[10], C[11]);
+	Key_Shift2 ks11d(D[10], D[11]);
+	PC2 pc2_11 ({C[11], D[11]}, keys[11]);
+	//layer 12 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks12c(C[11], C[12]);
+	Key_Shift2 ks12d(D[11], D[12]);
+	PC2 pc2_12 ({C[12], D[12]}, keys[12]);
+	//layer 13 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks13c(C[12], C[13]);
+	Key_Shift2 ks13d(D[12], D[13]);
+	PC2 pc2_13 ({C[13], D[13]}, keys[13]);
+	//layer 14 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks14c(C[13], C[14]);
+	Key_Shift2 ks14d(D[13], D[14]);
+	PC2 pc2_14 ({C[14], D[14]}, keys[14]);
+	//layer 15 - left shift by 2 then PC2 to key1
+	Key_Shift2 ks15c(C[14], C[15]);
+	Key_Shift2 ks15d(D[14], D[15]);
+	PC2 pc2_15 ({C[15], D[15]}, keys[15]);
+	//layer 16 - left shift by 1 then PC2 to key1
+	Key_Shift1 ks16c(C[15], C[16]);
+	Key_Shift1 ks16d(D[15], D[16]);
+	PC2 pc2_16 ({C[16], D[16]}, keys[16]);
+	assign keys_out = {keys[16], keys[15], keys[14], keys[13], keys[12], keys[11], keys[10], keys[9], keys[8], keys[7], keys[6], keys[5], keys[4], keys[3], keys[2], keys[1]};
 endmodule
+
+
 
 module Flipflop_32(input clk, input rst, input[31:0] in, output reg [31:0] out);
     always@(posedge(clk)) begin
@@ -1005,7 +1032,7 @@ module des (
     wire [47:0] keys[16:1]; //keys that will be generated later. keys[layer#][key#] //don't need 0
 
     // Key_Generator(input [63:0] keyin, output [47:0] keys [16:1]);
-    Key_Generator key_gen(key, keys);
+    Key_Generator key_gen(key, {keys[16], keys[15], keys[14], keys[13], keys[12], keys[11], keys[10], keys[9], keys[8], keys[7], keys[6], keys[5], keys[4], keys[3], keys[2], keys[1]});
 
     //Perform initial permute and split it into left and right
     //Initial_Permute(input [63:0] plaintext, output [63:0] ip);
@@ -1025,8 +1052,8 @@ module des (
     wire[31:0] l1, r1, l1_reg_out, r1_reg_out;
     Func_right layer1(l0_reg_out, r0_reg_out, key[1], r1);
     assign l1 = r0_reg_out;
-    Flipflop_32 l0_reg (clock, reset, l1, l1_reg_out);
-    Flipflop_32 r0_reg (clock, reset, r1, r1_reg_out);
+    Flipflop_32 l1_reg (clock, reset, l1, l1_reg_out);
+    Flipflop_32 r1_reg (clock, reset, r1, r1_reg_out);
     //calculate l2 and r2
     //Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[31:0] out);
     wire[31:0] l2, r2, l2_reg_out, r2_reg_out;

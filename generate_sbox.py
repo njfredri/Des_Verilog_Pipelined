@@ -1,12 +1,15 @@
 
 
 def gen_sbox_module(array, file, name):
-    beginningstr = "module " + name + "(input [5:0] x, output [3:0] y);\n"
+    beginningstr = "module " + name + "(input [5:0] x, output reg [3:0] y);\n"
     
     i = 0
-    
+    # r = b[0] * 2 + b[5];
+    # c = 8 * b[1] + 4 * b[2] + 2 * b[3] + b[4];
     # file.write(name)
     file.write(beginningstr)
+    file.write('\twire [5:0] s;\n')
+    file.write("\tassign s = {x[0], x[5], x[1], x[2], x[3], x[4]};\n")
     file.write('\talways @(*) begin\n')
     file.write("\t\tcase (s)\n")
     for num in array:

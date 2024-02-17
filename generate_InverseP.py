@@ -1,7 +1,7 @@
 
 
 def gen_inversep_module(array, file): #64 bit to 56 bit
-    beginningstr = "module " + "InverseP" + "(input [63:0] in, output [55:0] out);\n"
+    beginningstr = "module " + "InverseP" + "(input [63:0] in, output [63:0] out);\n"
     
     i = 0
     

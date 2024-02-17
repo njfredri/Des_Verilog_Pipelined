@@ -1,4 +1,6 @@
-module S1(input [5:0] x, output [3:0] y);
+module S1(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=15;
@@ -68,7 +70,9 @@ module S1(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module S2(input [5:0] x, output [3:0] y);
+module S2(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=15;
@@ -138,7 +142,9 @@ module S2(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module S3(input [5:0] x, output [3:0] y);
+module S3(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=10;
@@ -208,7 +214,9 @@ module S3(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module S4(input [5:0] x, output [3:0] y);
+module S4(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=7;
@@ -278,7 +286,9 @@ module S4(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module S5(input [5:0] x, output [3:0] y);
+module S5(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=2;
@@ -348,7 +358,9 @@ module S5(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module S6(input [5:0] x, output [3:0] y);
+module S6(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=12;
@@ -418,7 +430,9 @@ module S6(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module S7(input [5:0] x, output [3:0] y);
+module S7(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=4;
@@ -488,7 +502,9 @@ module S7(input [5:0] x, output [3:0] y);
 		endcase
 	end
 endmodule
-module S8(input [5:0] x, output [3:0] y);
+module S8(input [5:0] x, output reg [3:0] y);
+	wire [5:0] s;
+	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
 	always @(*) begin
 		case (s)
 			0: y=13;
