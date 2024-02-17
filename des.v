@@ -807,6 +807,86 @@ module PC2(input [55:0] in, output [47:0] out);
 	assign out[47] = in[31];
 endmodule
 
+module Key_Shift1(input [27:0] in, output [27:0] shifted);
+    assign shifted = {in[26:0], shifted[27]};
+endmodule
+
+module Key_Shift2(input [27:0] in, output [27:0] shifted);
+    assign shifted = {in[25:0], in[27:26]};
+endmodule
+
+module Key_Generator(input [63:0] keyin, output [47:0] keys [16:1]);
+    wire[55:0] pc1_out;
+    wire[27:0] C [16:0];
+    wire[27:0] D [16:0];
+    PC1 pc1(keyin, pc1_out);
+    Split_C_D splitcd(pc1_out, C[0], D[0]);
+    //1-left shift then PC2 to key1
+    Key_Shift1 ks00c(C[0], C[1]);
+    Key_Shift1 ks00d(D[0], D[1]);
+    PC({C[1], D[1]}, keys[1]);
+    //2-left shift 1 time
+    Key_Shift1 ks00c(C[1], C[2]);
+    Key_Shift1 ks00d(D[1], D[2]);
+    PC({C[1], D[1]}, keys[2]);
+    //3- left shift 2 times.
+    Key_Shift2 ks00c(C[2], C[3]);
+    Key_Shift2 ks00d(D[2], D[3]);
+    PC({C[1], D[1]}, keys[1]);
+    //4- left shift 2 times
+    Key_Shift2 ks00c(C[3], C[4]);
+    Key_Shift2 ks00d(D[3], D[4]);
+    PC({C[1], D[1]}, keys[4]);
+    //5- left shift 2 times
+    Key_Shift2 ks00c(C[4], C[5]);
+    Key_Shift2 ks00d(D[4], D[5]);
+    PC({C[1], D[1]}, keys[5]);
+    //6- left shift 2 times
+    Key_Shift2 ks00c(C[5], C[6]);
+    Key_Shift2 ks00d(D[5], D[6]);
+    PC({C[1], D[1]}, keys[6]);
+    //7- left shift 2 times
+    Key_Shift2 ks00c(C[6], C[7]);
+    Key_Shift2 ks00d(D[6], D[7]);
+    PC({C[1], D[1]}, keys[7]);
+    //8- left shift 2 times
+    Key_Shift2 ks00c(C[7], C[8]);
+    Key_Shift2 ks00d(D[7], D[8]);
+    PC({C[1], D[1]}, keys[8]);
+    //9- left shift 1 time
+    Key_Shift1 ks00c(C[8], C[9]);
+    Key_Shift1 ks00d(D[8], D[9]);
+    PC({C[1], D[1]}, keys[9]);
+    //10 left shift 2 times
+    Key_Shift2 ks00c(C[9], C[10]);
+    Key_Shift2 ks00d(D[9], D[10]);
+    PC({C[1], D[1]}, keys[10]);
+    //11 left shift 2 times
+    Key_Shift2 ks00c(C[10], C[11]);
+    Key_Shift2 ks00d(D[10], D[11]);
+    PC({C[1], D[1]}, keys[11]);
+    //12 left shift 2 times
+    Key_Shift2 ks00c(C[11], C[12]);
+    Key_Shift2 ks00d(D[11], D[12]);
+    PC({C[1], D[1]}, keys[12]);
+    //13 left shift 2 times
+    Key_Shift2 ks00c(C[12], C[13]);
+    Key_Shift2 ks00d(D[12], D[13]);
+    PC({C[1], D[1]}, keys[13]);
+    //14 left shift 2 times
+    Key_Shift2 ks00c(C[13], C[14]);
+    Key_Shift2 ks00d(D[13], D[14]);
+    PC({C[1], D[1]}, keys[14]);
+    //15 left shift 2 times
+    Key_Shift2 ks00c(C[14], C[15]);
+    Key_Shift2 ks00d(D[14], D[15]);
+    PC({C[1], D[1]}, keys[15]);
+    //16 left shift 1 time
+    Key_Shift1 ks00c(C[15], C[16]);
+    Key_Shift1 ks00d(D[15], D[16]);
+    PC({C[1], D[1]}, keys[16]);
+endmodule
+
 
 module Flipflop_32(input clk, input rst, input[31:0] in, output reg [31:0] out);
     always@(posedge(clk)) begin
