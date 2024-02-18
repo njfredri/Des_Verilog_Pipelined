@@ -9,11 +9,11 @@ def gen_sbox_module(array, file, name):
     # file.write(name)
     file.write(beginningstr)
     file.write('\twire [5:0] s;\n')
-    file.write("\tassign s = {x[0], x[5], x[1], x[2], x[3], x[4]};\n")
+    file.write("\tassign s = {x[5], x[0], x[4], x[3], x[2], x[1]};\n")
     file.write('\talways @(*) begin\n')
     file.write("\t\tcase (s)\n")
     for num in array:
-        file.write('\t\t\t' + str(i) + ': y=' + str(num) + ';\n')
+        file.write('\t\t\t' + str(i) + ': y=' + str(num) + ';\n') #subtract 1 to adjust for starting at 0
         i+=1
     file.write('\t\tendcase\n')
     file.write('\tend\n')
@@ -82,7 +82,7 @@ S8=[
 
 
 
-gen_sbox_module(S2, fout, 'S1')
+gen_sbox_module(S1, fout, 'S1')
 gen_sbox_module(S2, fout, 'S2')
 gen_sbox_module(S3, fout, 'S3')
 gen_sbox_module(S4, fout, 'S4')

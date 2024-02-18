@@ -1,19 +1,19 @@
 
 
 def gen_pc1_module(array, file, name): #64 bit to 56 bit
-    beginningstr = "module " + name + "(input [63:0] in, output [55:0] out);\n"
+    beginningstr = "module " + name + "(input [1:64] in, output [1:56] out);\n" #flipping nums around to see if key gen will work
     
     i = 0
     
     # file.write(name)
     file.write(beginningstr)
     for num in array:
-        file.write('\tassign out['+str(i)+'] = in[' + str(num-1) + '];\n') #num -1 bc we start at 0 in this implementation
+        file.write('\tassign out['+str(i)+'] = in[' + str(num) + '];\n') #num -1 bc we start at 0 in this implementation
         i+=1
     file.write('endmodule\n')
 
 def gen_pc2_module(array, file): #64 bit to 56 bit
-    beginningstr = "module " + 'PC2' + "(input [55:0] in, output [47:0] out);\n"
+    beginningstr = "module " + 'PC2' + "(input [1:56] in, output [1:48] out);\n"
     
     i = 0
     

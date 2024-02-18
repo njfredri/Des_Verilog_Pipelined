@@ -1,4 +1,4 @@
-module PC2(input [0:31] in, output [0:31] out);
+module PBox(input [0:31] in, output [0:31] out);
 	assign out[0] = in[15];
 	assign out[1] = in[6];
 	assign out[2] = in[19];

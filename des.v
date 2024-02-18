@@ -33,79 +33,79 @@ endmodule
 //each s will convert 6 bit value to 4 bit. There are 8 sboxs, so there should be a 32 bit result
 module S1(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
-			0: y=15;
-			1: y=1;
-			2: y=8;
-			3: y=14;
-			4: y=6;
-			5: y=11;
-			6: y=3;
-			7: y=4;
-			8: y=9;
-			9: y=7;
-			10: y=2;
-			11: y=13;
-			12: y=12;
-			13: y=0;
-			14: y=5;
-			15: y=10;
-			16: y=3;
-			17: y=13;
-			18: y=4;
-			19: y=7;
-			20: y=15;
+			0: y=14;
+			1: y=4;
+			2: y=13;
+			3: y=1;
+			4: y=2;
+			5: y=15;
+			6: y=11;
+			7: y=8;
+			8: y=3;
+			9: y=10;
+			10: y=6;
+			11: y=12;
+			12: y=5;
+			13: y=9;
+			14: y=0;
+			15: y=7;
+			16: y=0;
+			17: y=15;
+			18: y=7;
+			19: y=4;
+			20: y=14;
 			21: y=2;
-			22: y=8;
-			23: y=14;
-			24: y=12;
-			25: y=0;
-			26: y=1;
-			27: y=10;
-			28: y=6;
-			29: y=9;
-			30: y=11;
-			31: y=5;
-			32: y=0;
-			33: y=14;
-			34: y=7;
-			35: y=11;
-			36: y=10;
-			37: y=4;
-			38: y=13;
-			39: y=1;
-			40: y=5;
-			41: y=8;
-			42: y=12;
-			43: y=6;
-			44: y=9;
-			45: y=3;
-			46: y=2;
-			47: y=15;
-			48: y=13;
-			49: y=8;
-			50: y=10;
-			51: y=1;
-			52: y=3;
-			53: y=15;
-			54: y=4;
-			55: y=2;
-			56: y=11;
-			57: y=6;
-			58: y=7;
-			59: y=12;
-			60: y=0;
-			61: y=5;
-			62: y=14;
-			63: y=9;
+			22: y=13;
+			23: y=1;
+			24: y=10;
+			25: y=6;
+			26: y=12;
+			27: y=11;
+			28: y=9;
+			29: y=5;
+			30: y=3;
+			31: y=8;
+			32: y=4;
+			33: y=1;
+			34: y=14;
+			35: y=8;
+			36: y=13;
+			37: y=6;
+			38: y=2;
+			39: y=11;
+			40: y=15;
+			41: y=12;
+			42: y=9;
+			43: y=7;
+			44: y=3;
+			45: y=10;
+			46: y=5;
+			47: y=0;
+			48: y=15;
+			49: y=12;
+			50: y=8;
+			51: y=2;
+			52: y=4;
+			53: y=9;
+			54: y=1;
+			55: y=7;
+			56: y=5;
+			57: y=11;
+			58: y=3;
+			59: y=14;
+			60: y=10;
+			61: y=0;
+			62: y=6;
+			63: y=13;
 		endcase
 	end
 endmodule
 module S2(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
 			0: y=15;
@@ -177,7 +177,7 @@ module S2(input [5:0] x, output reg [3:0] y);
 endmodule
 module S3(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
 			0: y=10;
@@ -249,7 +249,7 @@ module S3(input [5:0] x, output reg [3:0] y);
 endmodule
 module S4(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
 			0: y=7;
@@ -321,7 +321,7 @@ module S4(input [5:0] x, output reg [3:0] y);
 endmodule
 module S5(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
 			0: y=2;
@@ -393,7 +393,7 @@ module S5(input [5:0] x, output reg [3:0] y);
 endmodule
 module S6(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
 			0: y=12;
@@ -465,7 +465,7 @@ module S6(input [5:0] x, output reg [3:0] y);
 endmodule
 module S7(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
 			0: y=4;
@@ -537,7 +537,7 @@ module S7(input [5:0] x, output reg [3:0] y);
 endmodule
 module S8(input [5:0] x, output reg [3:0] y);
 	wire [5:0] s;
-	assign s = {x[0], x[5], x[1], x[2], x[3], x[4]};
+	assign s = {x[5], x[0], x[4], x[3], x[2], x[1]};
 	always @(*) begin
 		case (s)
 			0: y=13;
@@ -608,29 +608,41 @@ module S8(input [5:0] x, output reg [3:0] y);
 	end
 endmodule
 
-
-
-module Pbox(input [32:1] x, output [31:0] out);
-    //     int P[] =
-    // {
-    //     16,  7, 20, 21,
-    //     29, 12, 28, 17,
-    //     1, 15, 23, 26,
-    //     5, 18, 31, 10,
-    //     2,  8, 24, 14,
-    //     32, 27,  3,  9,
-    //     19, 13, 30,  6,
-    //     22, 11,  4, 25
-    // };
-    assign out[3:0] = {x[21], x[20], x[7], x[16]};
-    assign out[7:4] = {x[17], x[28], x[12], x[29]};
-    assign out[11:8] = {x[26], x[23], x[15], x[1]};
-    assign out[15:12] = {x[10], x[31], x[18], x[5]};
-    assign out[19:16] = {x[14], x[24], x[8], x[2]};
-    assign out[23:20] = {x[9], x[3], x[27], x[32]};
-    assign out[27:24] = {x[6], x[20], x[13], x[19]};
-    assign out[31:28] = {x[25], x[4], x[11], x[22]};
+module Pbox(input [0:31] in, output [0:31] out);
+	assign out[0] = in[15];
+	assign out[1] = in[6];
+	assign out[2] = in[19];
+	assign out[3] = in[20];
+	assign out[4] = in[28];
+	assign out[5] = in[11];
+	assign out[6] = in[27];
+	assign out[7] = in[16];
+	assign out[8] = in[0];
+	assign out[9] = in[14];
+	assign out[10] = in[22];
+	assign out[11] = in[25];
+	assign out[12] = in[4];
+	assign out[13] = in[17];
+	assign out[14] = in[30];
+	assign out[15] = in[9];
+	assign out[16] = in[1];
+	assign out[17] = in[7];
+	assign out[18] = in[23];
+	assign out[19] = in[13];
+	assign out[20] = in[31];
+	assign out[21] = in[26];
+	assign out[22] = in[2];
+	assign out[23] = in[8];
+	assign out[24] = in[18];
+	assign out[25] = in[12];
+	assign out[26] = in[29];
+	assign out[27] = in[5];
+	assign out[28] = in[21];
+	assign out[29] = in[10];
+	assign out[30] = in[3];
+	assign out[31] = in[24];
 endmodule
+
 
 module Xor_with_left(input [31:0] left, input[31:0] r, output [31:0] out);
     assign out=left^r;
@@ -669,7 +681,7 @@ module Func_right(input[31:0] left, input [31:0] right, input[47:0] key, output[
     // module Pbox(input [31:0] x, output [31:0] out);
     wire[31:0] P_out;
     Pbox pbox(
-        .x(S_out),
+        .in(S_out),
         .out(P_out)
     );
     //final xor with Left
@@ -703,11 +715,11 @@ module Initial_Permute(input [64:1] plaintext, output [63:0] ip); //have to offs
 endmodule
 
 module Split_lr (input [63:0] in, output [31:0] right, output [31:0] left);
-    assign right = in[31:0];
-    assign left = in[63:32];
+    assign right = in[63:32];
+    assign left = in[31:0];
 endmodule
 
-module PC1(input [63:0] in, output [55:0] out);
+module PC1(input [0:63] in, output [0:55] out); //had to flip bit order.
 	assign out[0] = in[56];
 	assign out[1] = in[48];
 	assign out[2] = in[40];
@@ -771,7 +783,7 @@ module Split_C_D(input[55:0] pc1_in, output [27:0] c, output[27:0] d);
     assign d = pc1_in[27:0];
 endmodule
 
-module PC2(input [55:0] in, output [47:0] out);
+module PC2(input [0:55] in, output [0:47] out);
 	assign out[0] = in[13];
 	assign out[1] = in[16];
 	assign out[2] = in[10];
@@ -822,7 +834,7 @@ module PC2(input [55:0] in, output [47:0] out);
 	assign out[47] = in[31];
 endmodule
 
-module InverseP(input [63:0] in, output [63:0] out);
+module InverseP(input [0:63] in, output [0:63] out);
 	assign out[0] = in[39];
 	assign out[1] = in[7];
 	assign out[2] = in[47];
@@ -890,7 +902,7 @@ module InverseP(input [63:0] in, output [63:0] out);
 endmodule
 
 module Key_Shift1(input [27:0] in, output [27:0] shifted);
-    assign shifted = {in[26:0], shifted[27]};
+    assign shifted = {in[26:0], in[27]};
 endmodule
 
 module Key_Shift2(input [27:0] in, output [27:0] shifted);
@@ -1166,7 +1178,7 @@ module des (
     //final permutation before output
     //InverseP(input [63:0] in, output [55:0] out);
     wire [63:0] final_text;
-    InverseP final_perm({r6_reg_out, l16_reg_out}, final_text);
+    InverseP final_perm({r16_reg_out, l16_reg_out}, final_text);
     Flipflop_64 output_reg(clock, reset, final_text, ciphertext);
 
 endmodule
