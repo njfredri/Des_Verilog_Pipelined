@@ -1,3 +1,0 @@
-1. Go through and check that all permutations are adjusted to start at 0 instead of 1
-2. Double check the splitting of left and right
-3. Add in functionality for validation
