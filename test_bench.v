@@ -1,5 +1,3 @@
-// 5.5
-// 9.2
 `timescale 1ns/1ns
 module testbench();
 

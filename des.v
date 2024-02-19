@@ -1,3 +1,5 @@
+//Delay: 19 clock cycles
+//Number of stages: 19
 module Expand_r (input [32:1] r, output [47:0] exp); //changed r bits to start from 1
     // int E[] = //remember 32 is the first bit. Type it in reverse
     // {

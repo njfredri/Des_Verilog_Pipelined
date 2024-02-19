@@ -1,0 +1,60 @@
+# Current time Mon Feb 19 13:44:04 2024
+# ModelSim SE Stack Trace
+# Program = vish
+# Id = "10.6d"
+# Version = "2018.02"
+# Date = "Feb 24 2018"
+# Platform = win64
+
+Exception c0000005 has occurred at address 6bc7edd6. Traceback:
+# 0    0x6bc7edd6: 'Tcl_GetString + 0x16'
+# 1    0x6bc7ee4c: 'Tcl_GetStringFromObj + 0x1c'
+# 2    0x6bc62dec: 'Tcl_UpdateLinkedVar + 0x29c'
+# 3    0x6bc6440c: 'Tcl_ListObjReplace + 0x6c'
+# 4    0x4018b6f6: 'Tclsqlite3_SafeInit + 0xe58d6'
+# 5    0x4018a626: 'Tclsqlite3_SafeInit + 0xe4806'
+# 6    0x40183827: 'Tclsqlite3_SafeInit + 0xdda07'
+# 7    0x6bbc6c03: 'TclNRRunCallbacks + 0x63'
+# 8    0x6bc992e2: 'TclpRealloc + 0xa02'
+# 9    0x6bc9a0fc: 'Tcl_DoWhenIdle + 0x22c'
+# 10   0x6bc6d41c: 'Tcl_ServiceEvent + 0x9c'
+# 11   0x6bc6d0b4: 'Tcl_DoOneEvent + 0x124'
+# 12   0x6bc30a2e: 'Tcl_SetExitProc + 0x21e'
+# 13   0x6bbc6c03: 'TclNRRunCallbacks + 0x63'
+# 14   0xb53b0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 15   0xb53b1dbb: 'Itcl_ExecMethod + 0x23b'
+# 16   0xb53b9879: 'Itcl_EvalArgs + 0x1c9'
+# 17   0xb53b4b51: 'Itcl_HandleInstance + 0x2c1'
+# 18   0x6bbc6c03: 'TclNRRunCallbacks + 0x63'
+# 19   0x6bbc586c: 'TclCleanupCommand + 0x88c'
+# 20   0x6bbc8d4f: 'Tcl_EvalEx + 0x1f'
+# 21   0x6ba0431a: 'Tk_BindEvent + 0x91a'
+# 22   0x6ba3bd41: 'TkBindEventProc + 0x291'
+# 23   0x6ba4c614: 'Tk_HandleEvent + 0x2f4'
+# 24   0x6ba4b2da: 'TkDeleteThreadExitHandler + 0x31a'
+# 25   0x6bc6d41c: 'Tcl_ServiceEvent + 0x9c'
+# 26   0x6bc6d019: 'Tcl_DoOneEvent + 0x89'
+# 27   0x401aad6d: 'mti_RPC + 0x8bd'
+# 28   0x401d148e: 'Mtirpc_Init + 0x204be'
+# 29   0x403c660a: 'TPedit_Init + 0x2529a'
+# 30   0x403c6888: 'TPedit_Init + 0x25518'
+# 31   0x403c4c3e: 'TPedit_Init + 0x238ce'
+# 32   0x40156a6e: 'Tclsqlite3_SafeInit + 0xb0c4e'
+# 33   0x6bbc6c03: 'TclNRRunCallbacks + 0x63'
+# 34   0x4018b289: 'Tclsqlite3_SafeInit + 0xe5469'
+# 35   0x40189cd5: 'Tclsqlite3_SafeInit + 0xe3eb5'
+# 36   0x40189d7d: 'Tclsqlite3_SafeInit + 0xe3f5d'
+# 37   0x401831ed: 'Tclsqlite3_SafeInit + 0xdd3cd'
+# 38   0x40183018: 'Tclsqlite3_SafeInit + 0xdd1f8'
+# 39   0x6bc9965c: 'TclServiceIdle + 0x9c'
+# 40   0x6bc6d0c3: 'Tcl_DoOneEvent + 0x133'
+# 41   0x6ba4aee5: 'Tk_MainLoop + 0x25'
+# 42   0x6ba8d282: 'Tk_MainEx + 0x932'
+# 43   0x401d3280: 'Mtirpc_Init + 0x222b0'
+# 44   0x401d58b8: 'Mtirpc_Init + 0x248e8'
+# 45   0x405f02cf: 'Tclsqlite_Init + 0x1a5f'
+# 46   0xcabe257d: 'BaseThreadInitThunk + 0x1d'
+# 47   0xcce0aa58: 'RtlUserThreadStart + 0x28'
+StackWalk failed 0
+# End of Stack Trace
+
